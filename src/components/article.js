@@ -18,7 +18,6 @@ export default class Article extends React.Component {
     this.setArticles();
 
   }
-
   
   setArticles = async () => {
     const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/${this.props.match.params.id}`, {mode: 'cors'})
@@ -27,6 +26,17 @@ export default class Article extends React.Component {
     this.setState({article: jsonResponse});
   }
   render() {
+    if ("token" in localStorage) {
+      return (
+        <div>
+          <h1>{this.state.article.title}</h1>
+          <p>{this.state.article.text}</p>
+          <Button onClick={this.showProps}>{this.state.article.text}</Button>
+          <Button>Delete</Button>
+          <Button>Update</Button>
+        </div>
+      )
+    }
     return (
       <div>
         <h1>{this.state.article.title}</h1>

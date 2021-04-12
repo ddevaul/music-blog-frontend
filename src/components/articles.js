@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Pagination from "react-bootstrap/Pagination"
+
 // create pagination
 // then create routing
 // pages: 
@@ -11,6 +13,7 @@ export default class Articles extends React.Component {
     super(props);
     this.state = {
       articles: [],
+      currentPage: 1,
     };
   }
   render() {
@@ -30,6 +33,15 @@ export default class Articles extends React.Component {
         </Card>
          )
        })}
+       <Pagination>
+        <Pagination.First />
+        <Pagination.Prev />
+        <Pagination.Item>{this.state.currentPage}</Pagination.Item>
+        <Pagination.Item>{this.state.currentPage + 1}</Pagination.Item>
+        <Pagination.Item>{this.state.currentPage + 2}</Pagination.Item>
+        <Pagination.Next />
+        <Pagination.Last />
+        </Pagination>
       </div>
       
     )
