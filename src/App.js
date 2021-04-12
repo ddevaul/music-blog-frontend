@@ -31,11 +31,11 @@ export default class App extends React.Component {
       <BrowserRouter>
         <Nav></Nav>
         <Switch>
-          <Route exact path="/" render={() => <Articles articles={this.state.articles}></Articles>}></Route>
-          <Route exact path="/about" render={() => <About></About>}></Route>
-          <Route component={Article} path="/article/:id" render={() => <Article></Article>}></Route>
-          <Route path="/login" render={() => <Login></Login>}></Route>
-          <Route path="/postarticle" render={() => <PostArticle></PostArticle>}></Route>
+          <Route exact path="/music-blog-frontend" render={() => <Articles articles={this.state.articles}></Articles>}></Route>
+          <Route exact path="/music-blog-frontend/about" render={() => <About></About>}></Route>
+          <Route component={Article} path="/music-blog-frontend/article/:id" render={() => <Article></Article>}></Route>
+          <Route path="/music-blog-frontend/login" render={() => <Login></Login>}></Route>
+          <Route path="/music-blog-frontend/postarticle" render={() => <PostArticle></PostArticle>}></Route>
         </Switch>
       </BrowserRouter>
     )
