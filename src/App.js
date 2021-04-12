@@ -20,7 +20,7 @@ export default class App extends React.Component {
     this.setArticles();
   }
   setArticles = async () => {
-    const response = await fetch('http://localhost:3000/articles', {mode: 'cors'})
+    const response = await fetch('https://music-blog-desi.herokuapp.com/articles', {mode: 'cors'})
     const jsonResponse = await response.json();
     this.setState({articles: [...jsonResponse]});
   }

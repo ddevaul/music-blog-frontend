@@ -12,12 +12,12 @@ export default class About extends React.Component {
     event.preventDefault();
     console.log("send request");
     const requestOptions = {
-      mode: 'cors',
       method: 'POST',
-      headers: {'Content-Type': 'multipart/form-data'},
-      body: { username: this.state.username, password: this.state.password }
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: { 'username': this.state.username, 'password': this.state.password }
     };
-    console.log(requestOptions)
     const response = await fetch('http://localhost:3000/login', requestOptions)
     console.log(response);
       // .then(data => console.log(data));
