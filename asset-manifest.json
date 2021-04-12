@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/music-blog-frontend/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/music-blog-frontend/static/js/main.8461e575.chunk.js",
+    "main.js.map": "/music-blog-frontend/static/js/main.8461e575.chunk.js.map",
+    "runtime-main.js": "/music-blog-frontend/static/js/runtime-main.7e4f8e14.js",
+    "runtime-main.js.map": "/music-blog-frontend/static/js/runtime-main.7e4f8e14.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/music-blog-frontend/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.b500791a.chunk.js": "/music-blog-frontend/static/js/2.b500791a.chunk.js",
+    "static/js/2.b500791a.chunk.js.map": "/music-blog-frontend/static/js/2.b500791a.chunk.js.map",
+    "static/js/3.49aba2e8.chunk.js": "/music-blog-frontend/static/js/3.49aba2e8.chunk.js",
+    "static/js/3.49aba2e8.chunk.js.map": "/music-blog-frontend/static/js/3.49aba2e8.chunk.js.map",
+    "index.html": "/music-blog-frontend/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/music-blog-frontend/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.9d5b29c0.chunk.css.map": "/music-blog-frontend/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.b500791a.chunk.js.LICENSE.txt": "/music-blog-frontend/static/js/2.b500791a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7e4f8e14.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.b500791a.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.8461e575.chunk.js"
+  ]
+}
