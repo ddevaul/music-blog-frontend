@@ -9,13 +9,13 @@ import Login from './components/login'
 import Signup from './components/signup'
 import PostArticle from './components/postArticle'
 import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 
 export default class App extends React.Component {
 
   render() {
     return(
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <Nav></Nav>
         <Switch>
           <Route exact path="/" render={() => <Home></Home>}></Route>
@@ -26,7 +26,7 @@ export default class App extends React.Component {
           <Route path="/signup" render={() => <Signup></Signup>}></Route> 
           <Route path="/postarticle" render={() => <PostArticle></PostArticle>}></Route>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
