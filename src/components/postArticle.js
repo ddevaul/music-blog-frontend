@@ -1,4 +1,7 @@
 import React from "react";
+import { Editor } from "@tinymce/tinymce-react";
+
+
 
 export default class About extends React.Component {
   constructor(props) {
@@ -11,7 +14,6 @@ export default class About extends React.Component {
   }
   postArticle = async (event) => {
     event.preventDefault();
-    console.log("send request");
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -20,9 +22,7 @@ export default class About extends React.Component {
       },
       body: JSON.stringify({ title: this.state.title, content: this.state.content })
     };
-    const response = await fetch('https://music-blog-desi.herokuapp.com/articles', requestOptions)
-    const jResponse = await response.json();
-    console.log(jResponse);
+    const response = await fetch('http://localhost:3000/articles', requestOptions)
     if(response.status === 200) {
       this.setState({message: "Article posted"});
     } 
@@ -33,17 +33,21 @@ export default class About extends React.Component {
   handletitle = (event) => {
     this.setState({title: event.target.value})
   }
-  handleContent = (event) => {
-    this.setState({content: event.target.value})
+  handleContent = (content) => {
+    this.setState({content: content})
   }
   render() {
     return (
-      <div>
+      <div style={{margin: "2rem"}}>
         <h1>{this.state.message}</h1>
-        <form>
+        <form style={{display: "flex", flexDirection: "column"}}>
         <input onChange={this.handletitle} value={this.state.title} placeholder="title"></input>
-        <input onChange={this.handleContent} value={this.state.content} type="text" placeholder="content"></input>
-        <input onClick={this.postArticle} type="submit"></input>
+        <Editor
+          apiKey="c88ot38huyx82k9d2a4hlyo6goh6wmkwwdsbecbmoxnmlhgm"
+          plugins="wordcount"
+          onEditorChange={this.handleContent}
+        />
+        <input style={{width: '5rem'}} onClick={this.postArticle} type="submit"></input>
         </form>
       </div>
       

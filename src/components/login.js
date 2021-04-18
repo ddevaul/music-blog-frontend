@@ -1,16 +1,19 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-export default class About extends React.Component {
+import { Redirect } from 'react-router'
+
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
+      message: "",
+      refresh: false,
     }
   }
   login = async (event) => {
     event.preventDefault();
-    console.log("send request");
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -18,30 +21,50 @@ export default class About extends React.Component {
       },
       body: JSON.stringify({ username: this.state.username, password: this.state.password })
     };
-    const response = await fetch('https://music-blog-desi.herokuapp.com/login', requestOptions)
+    const response = await fetch('http://localhost:3000/login', requestOptions)
     const jResponse = await response.json();
     localStorage.setItem('token', jResponse.token);
-  }
-  handleUsername = (event) => {
-    this.setState({username: event.target.value})
-  }
-  handlePassword = (event) => {
-    this.setState({password: event.target.value})
+    localStorage.setItem('user', JSON.stringify(jResponse.user));
+    if (jResponse.message === "success") {
+      this.setState({ message: "Signed in" })
+    } 
+    else {
+      this.setState({ message: "error signing in. double check email and password" })
+    }
   }
   logout = () => {
     localStorage.clear();
+    this.setState({ message: "Logged out", refresh: true })
+  }
+  handleUsername = (event) => {
+    this.setState({ username: event.target.value })
+  }
+  handlePassword = (event) => {
+    this.setState({ password: event.target.value })
   }
   render() {
-    return (
-      <div>
-        <Button onClick={this.logout}>Log out</Button>
-        <form>
-          <input onChange={this.handleUsername} value={this.state.username} placeholder="username"></input>
-          <input onChange={this.handlePassword} value={this.state.password} type="password" placeholder="password"></input>
-          <input onClick={this.login} type="submit"></input>
-        </form>
-      </div>
-      
-    )
+   if (this.state.refresh) {
+      <Redirect to="/login"></Redirect>
+    }
+    if (localStorage.getItem('token')) {
+      return (
+        <div style={{margin: "2rem"}}>
+          <h3>{this.state.message}</h3>
+          <Button onClick={this.logout}>Log out</Button>
+       </div>
+      )
+    } 
+    else {
+      return (
+        <div style={{marginLeft: "2rem"}}>
+          <h3>{this.state.message}</h3>
+          <form>
+            <input onChange={this.handleUsername} value={this.state.username} placeholder="username"></input>
+            <input onChange={this.handlePassword} value={this.state.password} type="password" placeholder="password"></input>
+            <input onClick={this.login} type="submit"></input>
+          </form>
+        </div>
+      )
+    }
   }
 }
