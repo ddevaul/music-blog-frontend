@@ -14,7 +14,7 @@ export default class Home extends React.Component {
         position: 'relative',
         top: '-2rem'
         }}>
-        <h1 style={{margin: "2rem", color: "white"}}>Logo</h1>
+        <h1 style={{margin: "2rem", color: "white"}}>Desi's Music Blog</h1>
         <ul style={{ listStyle: 'none', color: 'white' }}>
           <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/articles'>Articles</a></li>
           <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/about'>About</a></li>

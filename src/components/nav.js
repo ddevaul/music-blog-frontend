@@ -39,7 +39,7 @@ export default class Nav extends React.Component {
     }
     return (
       <Navbar variant="light" style={navbarStyle}>
-        <Navbar.Brand style={textStyle} href="/music-blog-frontend/#/">Desi's Music Blog</Navbar.Brand>
+        <Navbar.Brand style={textStyle} href="/music-blog-frontend/#/">Home</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           {login}
