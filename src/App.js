@@ -15,10 +15,10 @@ export default class App extends React.Component {
 
   render() {
     return(
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Nav></Nav>
         <Switch>
-          <Route exact path="/music-blog-frontend" render={() => <Home></Home>}></Route>
+          <Route exact path="/" render={() => <Home></Home>}></Route>
           <Route exact path="/articles" render={() => <Articles></Articles>}></Route>
           <Route exact path="/about" render={() => <About></About>}></Route>
           <Route component={Article} path="/article/:id"></Route>
