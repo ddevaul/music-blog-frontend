@@ -26,7 +26,8 @@ export default class Login extends React.Component {
     localStorage.setItem('token', jResponse.token);
     localStorage.setItem('user', JSON.stringify(jResponse.user));
     if (jResponse.message === "success") {
-      this.setState({ message: "Signed in" })
+      this.setState({ message: "Signed in" });
+      window.location.reload();
     } 
     else {
       this.setState({ message: "error signing in. double check email and password" })
@@ -34,6 +35,7 @@ export default class Login extends React.Component {
   }
   logout = () => {
     localStorage.clear();
+    window.location.reload();
     this.setState({ message: "Logged out", refresh: true })
   }
   handleUsername = (event) => {
