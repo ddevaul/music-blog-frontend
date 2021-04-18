@@ -19,6 +19,7 @@ export default class Home extends React.Component {
           <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/articles'>Articles</a></li>
           <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/about'>About</a></li>
           <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/login'>Login</a></li>
+          <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/signup'>Signup</a></li>
           <li><a style={{ color: 'white' }} href='/music-blog-frontend/#/postarticle'>Post Article</a></li>
         </ul>
       </div>
