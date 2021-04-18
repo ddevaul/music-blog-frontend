@@ -31,14 +31,14 @@ export default class Articles extends React.Component {
   }
 
   totalArticles = async () => {
-    const response = await fetch('http://localhost:3000/articles/total');
+    const response = await fetch('https://music-blog-desi.herokuapp.com/articles/total');
     const jsonResponse = await response.json();
     const total = parseInt(jsonResponse);
     const max = Math.floor(total / 10);
     this.setState({totalArticles: total, maxPages: max});
   }
   setArticles = async (page) => {
-    const response = await fetch(`http://localhost:3000/articles/${page}`, {mode: 'cors'})
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/${page}`, {mode: 'cors'})
     const jsonResponse = await response.json();
     this.setState({articles: [...jsonResponse]});
   }

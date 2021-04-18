@@ -22,7 +22,7 @@ export default class About extends React.Component {
       },
       body: JSON.stringify({ title: this.state.title, content: this.state.content })
     };
-    const response = await fetch('http://localhost:3000/articles', requestOptions)
+    const response = await fetch('https://music-blog-desi.herokuapp.com/articles', requestOptions)
     if(response.status === 200) {
       this.setState({message: "Article posted"});
     } 

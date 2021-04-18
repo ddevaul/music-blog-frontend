@@ -21,7 +21,7 @@ export default class Login extends React.Component {
       },
       body: JSON.stringify({ username: this.state.username, password: this.state.password })
     };
-    const response = await fetch('http://localhost:3000/login', requestOptions)
+    const response = await fetch('https://music-blog-desi.herokuapp.com/login', requestOptions)
     const jResponse = await response.json();
     localStorage.setItem('token', jResponse.token);
     localStorage.setItem('user', JSON.stringify(jResponse.user));

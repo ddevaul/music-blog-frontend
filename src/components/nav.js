@@ -16,10 +16,10 @@ export default class Nav extends React.Component {
         login = 
         <div>
           <Navbar.Text style={{marginLeft: "1rem"}}>
-            <a style={textStyle} href="/music-blog-frontend/articles">Articles</a>
+            <a style={textStyle} href="/articles">Articles</a>
           </Navbar.Text>
           <Navbar.Text style={{marginLeft: "1rem"}}>
-            <a style={textStyle} href="/music-blog-frontend/login">Logout</a>
+            <a style={textStyle} href="/login">Logout</a>
           </Navbar.Text>
         </div>
     } 
@@ -27,13 +27,13 @@ export default class Nav extends React.Component {
       login = 
         <div>
         <Navbar.Text style={{marginLeft: "1rem"}}>
-          <a style={textStyle} href="/music-blog-frontend/articles">Articles</a>
+          <a style={textStyle} href="/articles">Articles</a>
         </Navbar.Text>
         <Navbar.Text style={{marginLeft: "1rem"}}>
-          <a style={textStyle} href="/music-blog-frontend/login">Login</a>
+          <a style={textStyle} href="/login">Login</a>
         </Navbar.Text>
         <Navbar.Text style={{marginLeft: "1rem"}}>
-        <a style={textStyle} href="/music-blog-frontend/signup">Signup</a>
+        <a style={textStyle} href="/signup">Signup</a>
         </Navbar.Text>
       </div>
     }
@@ -44,7 +44,7 @@ export default class Nav extends React.Component {
         <Navbar.Collapse className="justify-content-end">
           {login}
           <Navbar.Text style={{marginLeft: "1rem"}}>
-            <a style={textStyle} href="/music-blog-frontend/about">About</a>
+            <a style={textStyle} href="/about">About</a>
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar> 

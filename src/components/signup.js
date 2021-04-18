@@ -23,7 +23,7 @@ export default class Signup extends React.Component {
       },
       body: JSON.stringify({ username: this.state.username, password: this.state.password, confirmation: this.state.confirmation})
     };
-    const response = await fetch('http://localhost:3000/signup', requestOptions)
+    const response = await fetch('https://music-blog-desi.herokuapp.com/signup', requestOptions)
     const jResponse = await response.json();
     console.log(jResponse);
     if (jResponse.message === "success") {

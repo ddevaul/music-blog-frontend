@@ -31,13 +31,13 @@ export default class Article extends React.Component {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     };
-    const response = await fetch(`http://localhost:3000/users`, requestOptions)
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/users`, requestOptions)
     const jsonResponse = await response.json();
     this.setState({user: jsonResponse.user});
   }
   // https://music-blog-desi.herokuapp.com
   setArticles = async () => {
-    const response = await fetch(`http://localhost:3000/articles/article/${this.props.match.params.id}`, {mode: 'cors'})
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/article/${this.props.match.params.id}`, {mode: 'cors'})
     const jsonResponse = await response.json();
     const hedecoded = he.decode(jsonResponse[0].content);
     this.setState({title: jsonResponse[0].title, content: hedecoded, comments: jsonResponse[0].comments});
@@ -50,7 +50,7 @@ export default class Article extends React.Component {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     };
-    const response = await fetch(`http://localhost:3000/articles/article/${this.props.match.params.id}`, requestOptions)
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/article/${this.props.match.params.id}`, requestOptions)
     const jResponse = await response.json();
     if (jResponse === "Article deleted") {
       this.setState({message: "Article deleted"});
@@ -72,7 +72,7 @@ export default class Article extends React.Component {
       },
       body: JSON.stringify({ title: this.state.title, content: this.state.content })
     };
-    const response = await fetch(`http://localhost:3000/articles/article/${this.props.match.params.id}`, requestOptions)
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/article/${this.props.match.params.id}`, requestOptions)
     if(response.status === 200) {
       this.setState({message: "Article updated"});
     } 
@@ -86,7 +86,8 @@ export default class Article extends React.Component {
   handleComment = (event) => {
     this.setState({newComment: event.target.value});
   }
-  postComment = async () => {
+  postComment = async (event) => {
+    event.preventDefault();
     const user = JSON.parse(localStorage.getItem('user'));
     const requestOptions = {
       method: 'POST',
@@ -96,13 +97,15 @@ export default class Article extends React.Component {
       },
       body: JSON.stringify({ content: this.state.newComment, username: user.username})
     };
-    const response = await fetch(`http://localhost:3000/articles/article/${this.props.match.params.id}/comment`, requestOptions)
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/article/${this.props.match.params.id}/comment`, requestOptions)
     const jResponse = await response.json();
+    console.log(jResponse);
     if (jResponse === "comment posted") {
       this.setState({message: "Comment posted"});
+      this.setState({newComment: ""});  
+      window.location.reload();
+      }
     }
-    this.setState({newComment: ""});  
-  }
   deleteComment = async (comment) => {
     const requestOptions = {
       method: 'Delete',
@@ -111,7 +114,7 @@ export default class Article extends React.Component {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     };
-    const response = await fetch(`http://localhost:3000/articles/article/${this.props.match.params.id}/comment/${comment._id}`, requestOptions)
+    const response = await fetch(`https://music-blog-desi.herokuapp.com/articles/article/${this.props.match.params.id}/comment/${comment._id}`, requestOptions)
     const jResponse = await response.json();
     if (jResponse === "Comment deleted") {
       this.setState({message: "Comment deleted"});
@@ -155,9 +158,9 @@ export default class Article extends React.Component {
             <input style={buttonStyle} onClick={this.updateArticle} type="submit"></input>
             </form>
              <h3>Comments:</h3>
-            <form style={commentFormStyle}>
+            <form style={commentFormStyle} onSubmit={this.postComment}>
               <input onChange={this.handleComment} placeholder="Leave a comment"></input>
-              <input style={buttonStyle} onClick={this.postComment} type="submit"></input>
+              <input style={buttonStyle} type="submit"></input>
             </form>
             {this.state.comments.map((comment, index) => {
               return (
@@ -178,9 +181,9 @@ export default class Article extends React.Component {
           </div>
           <div style={centeredText}>{parse(this.state.content)}</div>
         <h3>Comments:</h3>
-          <form style={commentFormStyle}>
+          <form style={commentFormStyle} onSubmit={this.postComment}>
               <input onChange={this.handleComment} placeholder="Leave a comment"></input>
-              <input style={buttonStyle} onClick={this.postComment} type="submit"></input>
+              <input style={buttonStyle} type="submit"></input>
             </form>
           {this.state.comments.map((comment, index) => {
               return (
@@ -194,15 +197,15 @@ export default class Article extends React.Component {
     }
     let commentForm; 
     if (localStorage.getItem('token')) {
-      commentForm = <form style={commentFormStyle}>
+      commentForm = <form style={commentFormStyle} onSubmit={this.postComment}>
       <input onChange={this.handleComment} placeholder="Leave a comment"></input>
-      <input style={{width: '5rem'}} onClick={this.postComment} type="submit"></input>
+      <input style={{width: '5rem'}} type="submit"></input>
     </form>
     } 
     else {
       commentForm = 
         <div>
-          <p><a href="/music-blog-frontend/login">Login</a> to leave a comment</p>
+          <p><a href="/login">Login</a> to leave a comment</p>
         </div>
     }
     return (
