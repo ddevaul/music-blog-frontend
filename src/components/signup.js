@@ -51,7 +51,7 @@ export default class Signup extends React.Component {
   render() {
     if (this.state.redirect) {
       return (
-        <Redirect to="/music-blog-frontend/#/login"></Redirect>
+        <Redirect to="/login"></Redirect>
       )
     }
     return (
