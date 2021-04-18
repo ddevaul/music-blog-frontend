@@ -126,7 +126,7 @@ export default class Articles extends React.Component {
               <Card.Text>
                 {`${content}...`}
               </Card.Text>
-              <a href={`/#/article/${article._id}`}>Read</a>
+              <a href={`/music-blog-frontend/#/article/${article._id}`}>Read</a>
             </Card.Body>
           </Card>
           )
