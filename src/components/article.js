@@ -205,7 +205,7 @@ export default class Article extends React.Component {
     else {
       commentForm = 
         <div>
-          <p><a href="/login">Login</a> to leave a comment</p>
+          <p><a href="/#/login">Login</a> to leave a comment</p>
         </div>
     }
     return (

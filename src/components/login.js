@@ -44,7 +44,7 @@ export default class Login extends React.Component {
   }
   render() {
    if (this.state.refresh) {
-      <Redirect to="/login"></Redirect>
+      <Redirect to="/#/login"></Redirect>
     }
     if (localStorage.getItem('token')) {
       return (
