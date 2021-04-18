@@ -1,6 +1,7 @@
 {
   "name": "music-blog-frontend",
   "version": "0.1.0",
+  "homepage": "http://ddevaul.github.io/music-blog-frontend/",
   "engines": {
     "node": "15.5.0"
   },
